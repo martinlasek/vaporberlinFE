@@ -16,6 +16,8 @@
 <style lang="less">
   html {
     background: linear-gradient(135deg,#f46a78 0%,#fabb8f 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: Lato;
     min-height: 100%;
 

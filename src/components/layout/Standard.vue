@@ -1,7 +1,9 @@
 <template>
   <div>
     <stdNavigation></stdNavigation>
-    <slot name="hero"></slot>
+    <div class="hero container">
+      <slot name="hero"></slot>
+    </div>
     <slot name="content"></slot>
     <slot name="footer"></slot>
   </div>
@@ -18,4 +20,7 @@
 
 <style>
 
+  .hero {
+    min-height: 500px;
+  }
 </style>

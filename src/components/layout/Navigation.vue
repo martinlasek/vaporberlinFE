@@ -19,6 +19,7 @@
 <style lang="less">
   nav {
     display: block;
+    margin-bottom: 30px;
     min-height: 50px;
 
     .logo {
