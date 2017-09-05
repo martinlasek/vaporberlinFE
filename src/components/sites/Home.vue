@@ -2,31 +2,23 @@
   <std-layout>
 
     <template slot="hero">
-      
-      <div class="row">
 
-        <div class="col-xs-12 col-sm-6">
-          <box-link title="JOIN THE MEETUP" route="https://www.meetup.com/VaporBerlin/" target="_blank">
-            <template>
-              <img src="../../assets/images/meetup_logo.min.png" alt="">
-            </template>
-          </box-link>
-        </div>
+      <box-link title="JOIN THE MEETUP" route="https://www.meetup.com/VaporBerlin/" target="_blank">
+        <template>
+          <img src="../../assets/images/meetup_logo.min.png" alt="">
+        </template>
+      </box-link>
 
-        <div class="col-xs-12 col-sm-6">
-          <box-link title="VOTE A TOPIC" route="https://www.meetup.com/VaporBerlin/" target="_blank">
-            <template>
-              <button class="btn">
-                <span class="glyphicon glyphicon-chevron-up pull-left" aria-hidden="true"></span>
+      <box-link title="VOTE A TOPIC" route="https://www.meetup.com/VaporBerlin/" target="_blank">
+        <template>
+          <button class="btn">
+            <span class="glyphicon glyphicon-chevron-up pull-left" aria-hidden="true"></span>
                 <span class="quote pull-left">
-                  "Hey! Listen!"
+                  "How to setup vapor"
                 </span>
-              </button>
-            </template>
-          </box-link>
-        </div>
-
-      </div>
+          </button>
+        </template>
+      </box-link>
       
     </template>
 
@@ -42,3 +34,7 @@
     components: { stdLayout, boxLink }
   }
 </script>
+
+<style lang="less">
+ @import "../../assets/styles/css/min/Hero.less";
+</style>

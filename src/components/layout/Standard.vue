@@ -21,6 +21,13 @@
 <style>
 
   .hero {
-    min-height: 500px;
+    min-height: 300px;
+  }
+
+  /**
+   ** TABLET
+   */
+  @media screen and (min-width: 768px) {
+
   }
 </style>
