@@ -8,13 +8,13 @@
       </div>
 
       <div class="boxes">
-        <box-link title="JOIN THE MEETUP" route="https://www.meetup.com/VaporBerlin/" target="_blank">
+        <box-link title="JOIN THE MEETUP" external="true" route="https://www.meetup.com/VaporBerlin/" target="_blank">
           <template>
             <img src="../../assets/images/meetup_logo.min.png" alt="">
           </template>
         </box-link>
 
-        <box-link title="VOTE A TOPIC" route="https://www.meetup.com/VaporBerlin/" target="_blank">
+        <box-link title="VOTE A TOPIC" route="/topics">
           <template>
             <button class="btn">
               <span class="glyphicon glyphicon-chevron-up pull-left" aria-hidden="true"></span>
