@@ -1,0 +1,48 @@
+@import "../definition/colors.less";
+
+nav {
+  display: block;
+  margin-bottom: 30px;
+  min-height: 50px;
+
+  .logo {
+    padding: 5px 0;
+    text-align: center;
+    width: 100%;
+
+    a {
+      font-weight: 400;
+
+      &:hover {
+        border-bottom: 1px solid transparent;
+      }
+    }
+  }
+
+  .menu {
+    align-content: center;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  a {
+    border-bottom: 1px solid transparent;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 100;
+    text-decoration: none;
+    transition: border-bottom .2s ease-in-out;
+    padding: 5px 15px;
+
+    &:hover {
+      border-bottom: 1px solid #ffffff;
+      color: @white;
+      text-decoration: none;
+    }
+  }
+}
+
+/** TABLET */
+@import "../min768/Navigation768.less";
