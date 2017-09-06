@@ -1,6 +1,9 @@
-# vaporberlinfe
-
-> The frontend project for our meetup website vapor.berlin
+<h1 align="center">
+<a href="http://vapor.berlin/">vapor.berlin</a>
+</h1>
+<h3 align="center">
+the frontend of our meetup website for VaporBerlin
+</h3>
 
 ## Build Setup
 
