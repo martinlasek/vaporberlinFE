@@ -20,6 +20,33 @@
       font-size: 18px;
       height: 36px;
     }
+
+    input#password {
+      border-radius: 6px 0 0 6px;
+    }
+
+    .input-group-btn .btn {
+      background-color: @white;
+      border-color: @bloodOrange;
+      color: @bloodOrange;
+      padding: 7px 12px;
+      transition: background-color .1s ease-in-out, color .1s ease-in-out;
+      
+      &:focus,
+      &:hover {
+        background-color: @bloodOrange;
+        color: @white;
+      }
+    }
+
+    .password-helper {
+      position: absolute;
+      z-index: 100;
+      left: 10px;
+      font-size: 14px;
+      bottom: 8px;
+      background-color: white;
+    }
   }
 
   .label {
