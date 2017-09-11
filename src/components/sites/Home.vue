@@ -1,5 +1,5 @@
 <template>
-  <std-layout>
+  <standard-layout>
 
     <template slot="hero">
 
@@ -28,16 +28,16 @@
       
     </template>
 
-  </std-layout>
+  </standard-layout>
 </template>
 
 <script>
-  import stdLayout from './../layout/Standard'
-  import boxLink from './../elements/BoxLink'
+  import StandardLayout from '../layout/Standard'
+  import boxLink from '../elements/BoxLink'
 
   export default {
 
-    components: { stdLayout, boxLink }
+    components: { StandardLayout, boxLink }
   }
 </script>
 
