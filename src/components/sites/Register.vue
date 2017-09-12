@@ -9,30 +9,12 @@
 
       <white-box>
 
-        <div class="form-group email">
-          <label for="email" class="label">
-            EMAIL
-          </label>
-          <input id="email" type="email" class="form-control" v-model="email">
-        </div>
+        <email-field toEmit="updatedEmail" @updatedEmail="val => email = val" />
 
-        <div class="form-group password">
-          <label for="password" class="label">
-            PASSWORD
-          </label>
-          <div class="input-group">
-            <input id="password" type="password" class="form-control" v-model="password">
-            <span v-if="showPassword" class="password-helper"> {{ password }} </span>
-            <span class="input-group-btn">
-              <button class="btn" @click="togglePassword">
-                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-              </button>
-            </span>
-          </div>
-        </div>
+        <password-field toEmit="updatePassword" @updatePassword="val => password = val" />
 
         <div class="form-group submit">
-          <button class="btn register">
+          <button class="btn register" @click="register">
             register
           </button>
         </div>
@@ -46,15 +28,16 @@
 <script>
   import StandardLayout from '../layout/Standard.vue'
   import WhiteBox from '../elements/WhiteBox.vue'
+  import EmailField from '../elements/EmailField.vue'
+  import PasswordField from '../elements/PasswordField.vue'
 
   export default {
 
-    components: { StandardLayout, WhiteBox },
+    components: { StandardLayout, WhiteBox, EmailField, PasswordField },
 
     data() {
 
       return {
-        showPassword: false,
         password: '',
         email: ''
       }
@@ -62,9 +45,9 @@
 
     methods: {
 
-      togglePassword() {
+      register() {
 
-        this.showPassword = !this.showPassword;
+        // TODO: implement api call
       }
     }
   }
