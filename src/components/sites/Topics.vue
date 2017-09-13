@@ -3,9 +3,7 @@
   <standard-layout>
     <template slot="content">
 
-      <h1 class="text-center">
-        Topics Mopics
-      </h1>
+      <page-header text="Topics Mopics" />
 
     </template>
   </standard-layout>
@@ -14,9 +12,10 @@
 
 <script>
   import StandardLayout from '../layout/Standard.vue'
+  import PageHeader from '../elements/PageHeader.vue'
 
   export default {
 
-    components: { StandardLayout }
+    components: { StandardLayout, PageHeader }
   }
 </script>

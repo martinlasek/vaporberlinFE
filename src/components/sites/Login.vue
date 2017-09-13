@@ -10,6 +10,7 @@
         <email-field toEmit="updateEmail" @updateEmail="val => email = val"/>
         <password-field toEmit="updatePassword" @updatePassword="val => password = val"/>
         <submit-button text="Login" toEmit="submit" @submit="login"/>
+        <spinner :isActive="spinner" />
 
       </white-box-small>
 
@@ -24,17 +25,28 @@
   import PasswordField from '../elements/PasswordField.vue'
   import SubmitButton from '../elements/SubmitButton.vue'
   import PageHeader from '../elements/PageHeader.vue'
+  import Spinner from '../elements/Spinner.vue'
+  import {login} from '../../api/api'
 
   export default {
 
-    components: { StandardLayout, WhiteBoxSmall, EmailField, PasswordField, SubmitButton, PageHeader },
+    components: {
+      StandardLayout,
+      WhiteBoxSmall,
+      EmailField,
+      PasswordField,
+      SubmitButton,
+      PageHeader,
+      Spinner
+    },
 
     data() {
 
       return {
 
         email: '',
-        password: ''
+        password: '',
+        spinner: false
       }
     },
 
@@ -42,7 +54,14 @@
 
       login() {
 
-        // TODO: implement api call
+        this.spinner = true;
+        login(this.email, this.password, this.handleLoginResponse);
+      },
+
+      handleLoginResponse(loginResponse) {
+
+        this.spinner = false;
+        console.log(loginResponse);
       }
     }
   }

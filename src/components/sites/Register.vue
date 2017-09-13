@@ -3,9 +3,7 @@
   <standard-layout>
     <template slot="content">
 
-      <div class="text-center header">
-        REGISTER TO VOTE TOPICS!
-      </div>
+      <page-header text="REGISTER TO VOTE TOPICS!"/>
 
       <white-box-small>
 
@@ -26,13 +24,20 @@
   import EmailField from '../elements/EmailField.vue'
   import PasswordField from '../elements/PasswordField.vue'
   import SubmitButton from '../elements/SubmitButton.vue'
+  import PageHeader from '../elements/PageHeader.vue'
 
   export default {
 
-    components: { StandardLayout, WhiteBoxSmall, EmailField, PasswordField, SubmitButton },
+    components: {
+      StandardLayout,
+      WhiteBoxSmall,
+      EmailField,
+      PasswordField,
+      SubmitButton,
+      PageHeader
+    },
 
     data() {
-
       return {
         password: '',
         email: ''
