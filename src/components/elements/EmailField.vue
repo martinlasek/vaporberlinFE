@@ -11,14 +11,11 @@
   export default {
 
     props: {
-
       toEmit: ''
     },
 
     data() {
-
       return {
-
         email: ''
       }
     },
