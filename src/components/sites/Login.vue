@@ -3,21 +3,18 @@
   <standard-layout>
     <template slot="content">
 
-      <div class="text-center header">
-        REGISTER TO VOTE TOPICS!
-      </div>
+      <page-header text="LOGIN"/>
 
       <white-box-small>
 
-        <email-field toEmit="updatedEmail" @updatedEmail="val => email = val" />
-        <password-field toEmit="updatePassword" @updatePassword="val => password = val" />
-        <submit-button text="Register" toEmit="submit" @submit="register"/>
+        <email-field toEmit="updateEmail" @updateEmail="val => email = val"/>
+        <password-field toEmit="updatePassword" @updatePassword="val => password = val"/>
+        <submit-button text="Login" toEmit="submit" @submit="login"/>
 
       </white-box-small>
 
     </template>
   </standard-layout>
-
 </template>
 
 <script>
@@ -26,22 +23,24 @@
   import EmailField from '../elements/EmailField.vue'
   import PasswordField from '../elements/PasswordField.vue'
   import SubmitButton from '../elements/SubmitButton.vue'
+  import PageHeader from '../elements/PageHeader.vue'
 
   export default {
 
-    components: { StandardLayout, WhiteBoxSmall, EmailField, PasswordField, SubmitButton },
+    components: { StandardLayout, WhiteBoxSmall, EmailField, PasswordField, SubmitButton, PageHeader },
 
     data() {
 
       return {
-        password: '',
-        email: ''
+
+        email: '',
+        password: ''
       }
     },
 
     methods: {
 
-      register() {
+      login() {
 
         // TODO: implement api call
       }
