@@ -25,6 +25,7 @@
   import PasswordField from '../elements/PasswordField.vue'
   import SubmitButton from '../elements/SubmitButton.vue'
   import PageHeader from '../elements/PageHeader.vue'
+  import {register} from '../../api/api'
 
   export default {
 
@@ -48,7 +49,15 @@
 
       register() {
 
-        // TODO: implement api call
+        // TODO: start spinner
+        register(this.email, this.password, this.handleRegisterResponse);
+      },
+
+      handleRegisterResponse(registerResponse) {
+
+        // TODO: redirect to login page
+        // TODO: make a toaster message with "successful" message
+        console.log(registerResponse);
       }
     }
   }

@@ -4,9 +4,9 @@
       <router-link to="/">vapor.berlin</router-link>
     </div>
     <div class="menu">
-      <router-link to="/topics">topics</router-link>
-      <router-link to="/register">register</router-link>
-      <router-link to="/login">login</router-link>
+      <router-link :to="{name: 'topics'}">topics</router-link>
+      <router-link :to="{name: 'register'}">register</router-link>
+      <router-link :to="{name: 'login'}">login</router-link>
     </div>
   </nav>
 </template>

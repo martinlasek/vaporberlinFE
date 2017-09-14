@@ -61,6 +61,8 @@
       handleLoginResponse(loginResponse) {
 
         this.spinner = false;
+
+        // TODO: redirect to profile
         console.log(loginResponse);
       }
     }
