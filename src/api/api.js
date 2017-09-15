@@ -43,10 +43,21 @@ export function login(username, password, callback) {
   axios
     .post(POST_URL_LOGIN)
     .then(response => {
+
       callback(response);
     })
     .catch(error => {
-      console.log(error);
+
+      const err = {
+
+        data: {
+
+          status: error.response.status,
+          message: error.response.statusText
+        }
+      };
+
+      callback(err);
     })
   ;
 }

@@ -10,6 +10,7 @@
         <email-field toEmit="updatedEmail" @updatedEmail="val => email = val" />
         <password-field toEmit="updatePassword" @updatePassword="val => password = val" />
         <submit-button text="Register" toEmit="submit" @submit="register"/>
+        <spinner :isActive="spinner" />
 
       </white-box-small>
 
@@ -25,6 +26,7 @@
   import PasswordField from '../elements/PasswordField.vue'
   import SubmitButton from '../elements/SubmitButton.vue'
   import PageHeader from '../elements/PageHeader.vue'
+  import Spinner from '../elements/Spinner.vue'
   import {register} from '../../api/api'
 
   export default {
@@ -35,13 +37,15 @@
       EmailField,
       PasswordField,
       SubmitButton,
-      PageHeader
+      PageHeader,
+      Spinner
     },
 
     data() {
       return {
         password: '',
-        email: ''
+        email: '',
+        spinner: false
       }
     },
 
@@ -49,11 +53,13 @@
 
       register() {
 
-        // TODO: start spinner
+        this.spinner = true;
         register(this.email, this.password, this.handleRegisterResponse);
       },
 
       handleRegisterResponse(registerResponse) {
+
+
 
         // TODO: redirect to login page
         // TODO: make a toaster message with "successful" message

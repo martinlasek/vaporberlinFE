@@ -41,9 +41,7 @@
     },
 
     data() {
-
       return {
-
         email: '',
         password: '',
         spinner: false
@@ -62,7 +60,11 @@
 
         this.spinner = false;
 
-        // TODO: redirect to profile
+        if (loginResponse.data.status === 401) {
+
+          //this.$popup({message: 'invalid credentials'});
+        }
+
         console.log(loginResponse);
       }
     }
