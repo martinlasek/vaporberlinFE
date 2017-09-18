@@ -1,18 +1,8 @@
 <template>
   <div class="text-center header">
-    {{ text }}
+    <slot />
   </div>
 </template>
-
-<script>
-  export default {
-
-    props: {
-
-      text: {required: true}
-    }
-  }
-</script>
 
 <style lang="less">
   @import "../../assets/styles/css/min/PageHeader.less";

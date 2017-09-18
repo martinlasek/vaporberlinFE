@@ -3,7 +3,7 @@
   <standard-layout>
     <template slot="content">
 
-      <page-header text="REGISTER TO VOTE TOPICS!"/>
+      <page-header> REGISTER TO VOTE TOPICS! </page-header>
 
       <white-box-small>
 
@@ -57,13 +57,20 @@
         register(this.email, this.password, this.handleRegisterResponse);
       },
 
-      handleRegisterResponse(registerResponse) {
+      handleRegisterResponse(regResp) {
+        console.log(regResp);
+        // http status 200 OK
+        if (regResp.status === 200) {
 
+          const user = regResp.data;
+          this.$store.dispatch('setUser', user);
+          this.$router.push({name: 'profile'});
+        }
 
+        if (regResp.status === 409) {
 
-        // TODO: redirect to login page
-        // TODO: make a toaster message with "successful" message
-        console.log(registerResponse);
+          this.spinner = false;
+        }
       }
     }
   }

@@ -6,6 +6,8 @@ const POST_URL_LOGIN = BASE_URL + '/api/login';
 
 axios.defaults.baseURL = BASE_URL;
 
+//pragma mark - private
+
 /**
  *
  * @param username: email of the user
@@ -21,8 +23,10 @@ export function register(username, password, callback) {
       POST_URL_REGISTER,
       json
     )
-    .then(response => {
-      callback(response)
+    .then(resp => {
+
+      const respObj = {status: resp.data.status, data: resp.data};
+      callback(respObj)
     })
     .catch(error => {
       console.log(error)
@@ -60,4 +64,15 @@ export function login(username, password, callback) {
       callback(err);
     })
   ;
+}
+
+//pragma mark - private
+
+/**
+ *
+ * @param resp
+ */
+function normalizeResponse(resp) {
+
+  console.log(resp);
 }

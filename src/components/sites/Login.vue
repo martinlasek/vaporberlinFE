@@ -3,7 +3,7 @@
   <standard-layout>
     <template slot="content">
 
-      <page-header text="LOGIN"/>
+      <page-header> LOGIN </page-header>
 
       <white-box-small>
 
@@ -62,7 +62,6 @@
 
         if (loginResponse.data.status === 401) {
 
-          //this.$popup({message: 'invalid credentials'});
         }
 
         console.log(loginResponse);
