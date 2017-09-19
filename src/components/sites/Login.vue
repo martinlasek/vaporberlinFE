@@ -72,7 +72,8 @@
         if(resp.error) {
           this.handleResponseErrors(resp);
         } else {
-          // TODO: save user to store
+          const user = resp.data;
+          this.$store.dispatch('setUser', user);
           this.$router.push({name: 'profile'});
         }
       },

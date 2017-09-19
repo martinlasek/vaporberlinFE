@@ -5,7 +5,7 @@ import * as types from './mutation-types'
  *  are a bridge used to mutate the state
  */
 
-// PRAGMA MARK: User
+//pragma mark - User
 
 /** invokes the mutation to set the user */
 export const setUser = (state, user) => {

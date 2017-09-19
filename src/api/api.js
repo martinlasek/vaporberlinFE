@@ -61,7 +61,6 @@ export function login(username, password, callback) {
 
 /**
  * creates an object out of success/error response
- * to have always the same keys
  * @param resp
  * @param context
  */
@@ -76,7 +75,9 @@ function normResponse(resp, context) {
   }
 
   if(context === 'success') {
-    console.log('success', resp);
+    normedResponse.status = resp.status;
+    normedResponse.error = false;
+    normedResponse.data = resp.data;
   }
 
   return normedResponse;
