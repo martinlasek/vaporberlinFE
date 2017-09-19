@@ -7,6 +7,7 @@
 
       <white-box-small>
 
+        <form-error purpose="danger" v-if="hasErrors" :errors="errorMessages"/>
         <email-field toEmit="updateEmail" @updateEmail="val => email = val"/>
         <password-field toEmit="updatePassword" @updatePassword="val => password = val"/>
         <submit-button text="Login" toEmit="submit" @submit="login"/>
@@ -25,6 +26,7 @@
   import PasswordField from '../elements/PasswordField.vue'
   import SubmitButton from '../elements/SubmitButton.vue'
   import PageHeader from '../elements/PageHeader.vue'
+  import FormError from '../elements/FormError.vue'
   import Spinner from '../elements/Spinner.vue'
   import {login} from '../../api/api'
 
@@ -37,6 +39,7 @@
       PasswordField,
       SubmitButton,
       PageHeader,
+      FormError,
       Spinner
     },
 
@@ -44,7 +47,9 @@
       return {
         email: '',
         password: '',
-        spinner: false
+        spinner: false,
+        hasErrors: false,
+        errorMessages: []
       }
     },
 
@@ -56,15 +61,44 @@
         login(this.email, this.password, this.handleLoginResponse);
       },
 
-      handleLoginResponse(loginResponse) {
-
+      /**
+       *
+       * @param resp
+       */
+      handleLoginResponse(resp) {
         this.spinner = false;
+        this.errorMessages = [];
 
-        if (loginResponse.data.status === 401) {
+        if(resp.error) {
+          this.handleResponseErrors(resp);
+        } else {
+          // TODO: save user to store
+          this.$router.push({name: 'profile'});
+        }
+      },
 
+      /**
+       * checks status, adds error message
+       * to errorMessages and displays error
+       * @param resp
+       * @returns {boolean}
+       */
+      handleResponseErrors(resp) {
+
+        let hasErrors = false;
+
+        if (resp.status === 401) {
+          this.errorMessages.push(resp.message);
+          hasErrors = true;
         }
 
-        console.log(loginResponse);
+        if (!hasErrors) {
+          this.errorMessages.push('could not identify error');
+          hasErrors = true;
+          console.log('unhandled error: ', resp);
+        }
+
+        this.hasErrors = hasErrors;
       }
     }
   }

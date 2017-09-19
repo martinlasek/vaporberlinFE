@@ -47,21 +47,12 @@ export function login(username, password, callback) {
   axios
     .post(POST_URL_LOGIN)
     .then(response => {
-
-      callback(response);
+      const normedResp = normResponse(response, 'success');
+      callback(normedResp);
     })
     .catch(error => {
-
-      const err = {
-
-        data: {
-
-          status: error.response.status,
-          message: error.response.statusText
-        }
-      };
-
-      callback(err);
+      const normedResp = normResponse(error, 'error');
+      callback(normedResp);
     })
   ;
 }
@@ -69,10 +60,24 @@ export function login(username, password, callback) {
 //pragma mark - private
 
 /**
- *
+ * creates an object out of success/error response
+ * to have always the same keys
  * @param resp
+ * @param context
  */
-function normalizeResponse(resp) {
+function normResponse(resp, context) {
 
-  console.log(resp);
+  let normedResponse = {};
+
+  if(context === 'error') {
+    normedResponse.status = resp.response.status;
+    normedResponse.message = resp.response.statusText;
+    normedResponse.error = true;
+  }
+
+  if(context === 'success') {
+    console.log('success', resp);
+  }
+
+  return normedResponse;
 }
