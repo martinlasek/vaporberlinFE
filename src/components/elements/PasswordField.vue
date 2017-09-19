@@ -6,15 +6,25 @@
     </label>
 
     <div class="input-group">
-      <input name="password" v-validate="'required'" type="password" :class="['form-control', { 'hidden': showPassword }]" v-model="password" @blur="visited">
-      <input type="text" :class="['form-control', { 'hidden': !showPassword }]" v-model="password">
+      <input
+        v-validate="'required'"
+        name="password"
+        type="password"
+        :class="['form-control', { 'hidden': showPassword }]"
+        v-model="password"
+      >
+      <input
+        type="text"
+        :class="['form-control', { 'hidden': !showPassword }]"
+        v-model="password"
+      >
       <span class="input-group-btn">
         <button class="btn" @click="togglePassword">
           <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
         </button>
       </span>
     </div>
-    <span :class="{'glyphicon glyphicon-remove': true, 'visible': revealErrorIcon && errors.has('password')}"></span>
+    <span :class="{'glyphicon glyphicon-remove': true, 'visible': errors.has('password')}"></span>
 
     <error-message v-if="errors.has('password')">
       {{ errors.first('password') }}
@@ -36,18 +46,13 @@
     data() {
       return {
         showPassword: false,
-        password: '',
-        revealErrorIcon: false
+        password: ''
       }
     },
 
     methods: {
       togglePassword() {
         this.showPassword = !this.showPassword;
-      },
-
-      visited() {
-        this.revealErrorIcon = true;
       }
     },
 

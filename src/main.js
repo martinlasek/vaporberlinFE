@@ -6,7 +6,7 @@ import router from './router'
 import store from './store/index'
 import VeeValidate from 'vee-validate'
 
-Vue.use(VeeValidate, {events: 'blur'});
+Vue.use(VeeValidate);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */

@@ -9,11 +9,10 @@
       type="text"
       class="form-control"
       v-model="email"
-      @blur="visited"
     >
-    <span :class="{'glyphicon glyphicon-ok': true, 'visible': revealTick && !errors.has('email') && showIsValid}" aria-hidden="true"></span>
-    <span :class="{'glyphicon glyphicon-remove': true, 'visible': revealTick && errors.has('email')}" aria-hidden="true"></span>
-    <error-message v-if="errors.has('email')">
+    <span :class="{'glyphicon glyphicon-ok': true, 'visible': !errors.has('email') && showIsValid}"></span>
+    <span :class="{'glyphicon glyphicon-remove': true, 'visible': errors.has('email')}"></span>
+    <error-message v-show="errors.has('email')">
       {{ errors.first('email') }}
     </error-message>
   </div>
@@ -32,14 +31,7 @@
 
     data() {
       return {
-        email: '',
-        revealTick: false
-      }
-    },
-
-    methods: {
-      visited() {
-        this.revealTick = true;
+        email: ''
       }
     },
 
