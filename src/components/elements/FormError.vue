@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <ul :class="purposeClass">
-      <li v-for="error in errors">
+      <li v-for="error in errorMessages">
         {{ error }}
       </li>
     </ul>
@@ -13,7 +13,7 @@
 
     props: {
       purpose: {default: 'default'},
-      errors: null
+      errorMessages: null
     },
 
     computed: {
