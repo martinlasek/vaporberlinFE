@@ -62,14 +62,13 @@
         }
 
         this.spinner = true;
-        login(this.email, this.password, this.handleLoginResponse);
+        login(this.email, this.password, this.handleResponse);
       },
 
-      handleLoginResponse(resp) {
+      handleResponse(resp) {
         this.spinner = false;
-        this.errorMessages = [];
 
-        if(resp.error) {
+        if (resp.error) {
           this.handleResponseErrors(resp);
         } else {
           const user = resp.data;
@@ -78,28 +77,9 @@
         }
       },
 
-      /**
-       * checks status, adds error message
-       * to errorMessages and displays error
-       * @param resp
-       * @returns {boolean}
-       */
       handleResponseErrors(resp) {
-
-        let hasErrors = false;
-
-        if (resp.status === 401) {
-          this.errorMessages.push('wrong credentials');
-          hasErrors = true;
-        }
-
-        if (!hasErrors) {
-          this.errorMessages.push('could not identify error');
-          hasErrors = true;
-          console.log('unhandled error: ', resp);
-        }
-
-        this.hasErrors = hasErrors;
+        this.errorMessages = resp.messages;
+        this.hasErrors = true;
       }
     }
   }

@@ -7,6 +7,7 @@
 
       <white-box-small>
 
+        <form-error purpose="danger" v-if="hasErrors" :errorMessages="errorMessages"/>
         <email-field toEmit="updatedEmail" @updatedEmail="val => email = val" />
         <password-field toEmit="updatePassword" @updatePassword="val => password = val" />
         <submit-button text="Register" toEmit="submit" @submit="register"/>
@@ -26,6 +27,7 @@
   import PasswordField from '../elements/PasswordField.vue'
   import SubmitButton from '../elements/SubmitButton.vue'
   import PageHeader from '../elements/PageHeader.vue'
+  import FormError from '../elements/FormError.vue'
   import Spinner from '../elements/Spinner.vue'
   import {register} from '../../api/api'
 
@@ -38,6 +40,7 @@
       PasswordField,
       SubmitButton,
       PageHeader,
+      FormError,
       Spinner
     },
 
@@ -45,32 +48,39 @@
       return {
         password: '',
         email: '',
-        spinner: false
+        spinner: false,
+        hasErrors: false,
+        errorMessages: []
       }
     },
 
     methods: {
-
       register() {
+        if (this.email === '' && this.password === '') {
+          this.errorMessages.push('you must fill out the fields.');
+          this.hasErrors = true;
+          return;
+        }
 
         this.spinner = true;
-        register(this.email, this.password, this.handleRegisterResponse);
+        register(this.email, this.password, this.handleResponse);
       },
 
-      handleRegisterResponse(regResp) {
-        console.log(regResp);
-        // http status 200 OK
-        if (regResp.status === 200) {
+      handleResponse(resp) {
+        this.spinner = false;
 
-          const user = regResp.data;
+        if (resp.error) {
+          this.handleResponseErrors(resp);
+        } else {
+          const user = resp.data;
           this.$store.dispatch('setUser', user);
           this.$router.push({name: 'profile'});
         }
+      },
 
-        if (regResp.status === 409) {
-
-          this.spinner = false;
-        }
+      handleResponseErrors(resp) {
+        this.errorMessages = resp.messages;
+        this.hasErrors = true;
       }
     }
   }

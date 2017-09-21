@@ -6,7 +6,7 @@ const POST_URL_LOGIN = BASE_URL + '/api/login';
 
 axios.defaults.baseURL = BASE_URL;
 
-//pragma mark - private
+//pragma mark - public
 
 /**
  *
@@ -24,12 +24,12 @@ export function register(username, password, callback) {
       json
     )
     .then(resp => {
-
-      const respObj = {status: resp.data.status, data: resp.data};
-      callback(respObj)
+      const normedResp = normResponse(resp);
+      callback(normedResp)
     })
     .catch(error => {
-      console.log(error)
+      const normedResp = normResponse(error);
+      callback(normedResp)
     })
   ;
 }
@@ -47,11 +47,11 @@ export function login(username, password, callback) {
   axios
     .post(POST_URL_LOGIN)
     .then(response => {
-      const normedResp = normResponse(response, 'success');
+      const normedResp = normResponse(response);
       callback(normedResp);
     })
     .catch(error => {
-      const normedResp = normResponse(error, 'error');
+      const normedResp = normResponse(error);
       callback(normedResp);
     })
   ;
@@ -60,25 +60,55 @@ export function login(username, password, callback) {
 //pragma mark - private
 
 /**
- * creates an object out of success/error response
- * @param resp
- * @param context
+ * creates an object out of response
+ * - success: {status, error, data}
+ * - error: {status, error, messages}
  */
-function normResponse(resp, context) {
-
+function normResponse(resp) {
   let normedResponse = {};
-
-  if(context === 'error') {
-    normedResponse.status = resp.response.status;
-    normedResponse.message = resp.response.statusText;
-    normedResponse.error = true;
+  
+  /** check if error is of: network error */
+  if (resp.message !== undefined) {
+    if (resp.message === 'Network Error') {
+      normedResponse.status = 400;
+      normedResponse.error = true;
+      normedResponse.messages = ['Network Error. Do you have access to the internet?'];
+      return normedResponse;
+    }
   }
 
-  if(context === 'success') {
-    normedResponse.status = resp.status;
+  /** check if error is of: not authenticated */
+  if (resp.response !== undefined) {
+    if (resp.response.status === 401) {
+      normedResponse.status = 401;
+      normedResponse.error = true;
+      normedResponse.messages = ['Invalid credentials.'];
+      return normedResponse;
+    }
+  }
+
+  if (resp.data !== undefined) {
+    if (resp.data.status === 409) {
+      normedResponse.status = 409;
+      normedResponse.error = true;
+      normedResponse.messages = [resp.data.message];
+      return normedResponse;
+    }
+
+    if (resp.data.status === 406) {
+      normedResponse.status = 406;
+      normedResponse.error = true;
+      normedResponse.messages = [resp.data.message];
+      return normedResponse;
+    }
+
+    /** if here, assume everything went fine */
+    normedResponse.status = 200;
     normedResponse.error = false;
     normedResponse.data = resp.data;
+    return normedResponse;
   }
 
-  return normedResponse;
+  console.log(resp);
+  throw new Error('Could not handle response.')
 }
