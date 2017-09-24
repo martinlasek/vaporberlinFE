@@ -8,7 +8,16 @@ export default {
 
   /** stores user in global state */
   [types.SET_USER] (state, user) {
-
     state.user = user;
+  },
+
+  /** stores the user token in global state */
+  [types.SET_TOKEN] (state, token) {
+    state.token = token;
+  },
+
+  /** removes the user token from global state */
+  [types.CLEAR_TOKEN] (state) {
+    state.token = '';
   }
 }

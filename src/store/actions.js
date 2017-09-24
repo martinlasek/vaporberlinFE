@@ -9,6 +9,12 @@ import * as types from './mutation-types'
 
 /** invokes the mutation to set the user */
 export const setUser = (state, user) => {
+  state.commit(types.SET_USER, user);
+};
 
-  state.commit(types.SET_USER, user)
+//pragma mark - Token
+
+/** invokes the mutation to set the user token */
+export const setToken = (state, token) => {
+  state.commit(types.SET_TOKEN, token);
 };

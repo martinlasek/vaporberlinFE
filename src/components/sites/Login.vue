@@ -71,8 +71,8 @@
         if (resp.error) {
           this.handleResponseErrors(resp);
         } else {
-          const user = resp.data;
-          this.$store.dispatch('setUser', user);
+          const token = resp.data;
+          this.$store.dispatch('setToken', token);
           this.$router.push({name: 'profile'});
         }
       },

@@ -8,3 +8,6 @@
 
 /** returns the user */
 export const getUser = state => state.user;
+
+/** returns the user token */
+export const getToken = state => state.token;
