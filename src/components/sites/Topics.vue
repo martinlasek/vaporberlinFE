@@ -3,7 +3,7 @@
   <standard-layout>
     <template slot="content">
 
-      <page-header> Topics Mopics </page-header>
+      <page-header> TOPICS </page-header>
 
     </template>
   </standard-layout>

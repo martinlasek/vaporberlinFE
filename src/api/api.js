@@ -1,4 +1,6 @@
 import axios from 'axios';
+import store from '../store/index';
+import router from '../router/index';
 
 const BASE_URL = 'http://127.0.0.1:8020';
 const POST_URL_REGISTER = BASE_URL + '/api/user';
@@ -55,6 +57,21 @@ export function login(username, password, callback) {
       callback(normedResp);
     })
   ;
+}
+
+export function logout() {
+  store.dispatch('clearToken');
+  router.push({name: 'login'});
+}
+
+/**
+ * checks if token is set
+ * @returns {boolean}
+ */
+export function isAuthenticated() {
+  const token = store.getters.getToken;
+  console.log(token);
+  return token !== '';
 }
 
 //pragma mark - private

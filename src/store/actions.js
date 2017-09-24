@@ -18,3 +18,8 @@ export const setUser = (state, user) => {
 export const setToken = (state, token) => {
   state.commit(types.SET_TOKEN, token);
 };
+
+/** invokes the mutation to clear the user token */
+export const clearToken = (state) => {
+  state.commit(types.CLEAR_TOKEN);
+};
