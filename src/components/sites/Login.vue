@@ -10,7 +10,7 @@
         <form-error purpose="danger" v-if="hasErrors" :errorMessages="errorMessages"/>
         <email-field toEmit="updateEmail" @updateEmail="val => email = val"/>
         <password-field toEmit="updatePassword" @updatePassword="val => password = val"/>
-        <submit-button text="Login" toEmit="submit" @submit="login"/>
+        <submit-button text="Login" toEmit="submit" @submit="login" />
         <spinner :isActive="spinner" />
 
       </white-box-small>
