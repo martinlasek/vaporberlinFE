@@ -65,6 +65,7 @@ export function login(username, password, callback) {
  */
 export function logout() {
   store.dispatch('clearToken');
+  store.dispatch('clearUser');
   router.push({name: 'login'});
 }
 

@@ -12,6 +12,11 @@ export const setUser = (state, user) => {
   state.commit(types.SET_USER, user);
 };
 
+/** invokes the mutation to clear the user */
+export const clearUser = (state) => {
+  state.commit(types.CLEAR_USER);
+};
+
 //pragma mark - Token
 
 /** invokes the mutation to set the user token */

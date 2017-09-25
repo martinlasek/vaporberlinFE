@@ -11,6 +11,10 @@ export default {
     state.user = user;
   },
 
+  [types.CLEAR_USER] (state) {
+    state.user = {};
+  },
+
   /** stores the user token in global state */
   [types.SET_TOKEN] (state, token) {
     state.token = token;
