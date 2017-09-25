@@ -4,7 +4,7 @@
  * but also processed data based on the state
  */
 
-// PRAGMA MARK: User
+//pragma mark - User
 
 /** returns the user */
 export const getUser = state => state.user;

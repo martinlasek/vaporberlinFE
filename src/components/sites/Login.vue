@@ -73,7 +73,7 @@
         } else {
           const token = resp.data.token;
           this.$store.dispatch('setToken', token);
-          this.$router.push({name: 'profile'});
+          this.$router.push({name: 'topics'});
         }
       },
 

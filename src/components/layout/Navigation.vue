@@ -5,10 +5,15 @@
     </div>
     <div class="menu">
       <router-link :to="{name: 'topics'}">topics</router-link>
-      <router-link v-if="isAuthenticated" :to="{name: 'profile'}">profile</router-link>
       <router-link v-if="!isAuthenticated" :to="{name: 'register'}">register</router-link>
       <router-link v-if="!isAuthenticated" :to="{name: 'login'}">login</router-link>
-      <a v-if="isAuthenticated" href="javascript:void(0);" @click="logout">logout</a>
+      <span class="no-border" v-if="isAuthenticated">
+        Account
+        <ul class="submenu">
+          <li>emailmeso@oftenas.yu</li>
+          <li @click="logout">logout</li>
+        </ul>
+      </span>
     </div>
   </nav>
 </template>

@@ -11,6 +11,7 @@ export default {
     state.user = user;
   },
 
+  /** removes user from global state */
   [types.CLEAR_USER] (state) {
     state.user = {};
   },
