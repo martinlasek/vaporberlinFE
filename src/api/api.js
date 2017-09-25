@@ -5,6 +5,7 @@ import router from '../router/index';
 const BASE_URL = 'http://127.0.0.1:8020';
 const POST_URL_REGISTER = BASE_URL + '/api/user';
 const POST_URL_LOGIN = BASE_URL + '/api/login';
+const GET_URL_USER = BASE_URL + '/api/user';
 
 axios.defaults.baseURL = BASE_URL;
 
@@ -59,9 +60,32 @@ export function login(username, password, callback) {
   ;
 }
 
+/**
+ * removes token from global state
+ */
 export function logout() {
   store.dispatch('clearToken');
   router.push({name: 'login'});
+}
+
+/**
+ * fetches the user from api
+ */
+export function fetchUser() {
+  const token = store.getters.getToken;
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+  axios
+    .get(GET_URL_USER)
+    .then(response => {
+      const normedResp = normResponse(response);
+      store.dispatch('setUser', normedResp.data);
+    })
+    .catch(error => {
+      const normedResp = normResponse(error);
+      console.log('error', normedResp);
+    })
+  ;
 }
 
 /**
@@ -70,7 +94,6 @@ export function logout() {
  */
 export function isAuthenticated() {
   const token = store.getters.getToken;
-  console.log(token);
   return token !== '';
 }
 

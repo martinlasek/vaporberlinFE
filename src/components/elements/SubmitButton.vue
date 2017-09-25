@@ -9,17 +9,13 @@
 
 <script>
   export default {
-
     props: {
-
       toEmit: '',
       text: {default: 'Submit'}
     },
 
     methods: {
-
       clicked() {
-
         this.$emit(this.toEmit);
       }
     }
