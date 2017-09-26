@@ -7,6 +7,7 @@ const POST_URL_REGISTER = BASE_URL + '/api/user';
 const POST_URL_LOGIN = BASE_URL + '/api/login';
 const GET_URL_USER = BASE_URL + '/api/user';
 const GET_URL_TOPIC_LIST = BASE_URL + '/api/topic/list';
+const POST_URL_CREATE_TOPIC = BASE_URL + '/api/topic';
 
 axios.defaults.baseURL = BASE_URL;
 
@@ -98,7 +99,6 @@ export function fetchTopicList() {
   axios
     .get(GET_URL_TOPIC_LIST)
     .then(resp => {
-      console.log(resp);
       store.dispatch('setTopicList', resp.data.topics);
     })
     .catch(error => {
@@ -106,6 +106,25 @@ export function fetchTopicList() {
       console.log('error', normedResp);
     })
   ;
+}
+
+/**
+ *
+ * @param description
+ */
+export function createTopic(description) {
+
+  const token = store.getters.getToken;
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+  axios.post(
+    POST_URL_CREATE_TOPIC,
+    {description: description}
+  ).then(resp => {
+    fetchTopicList();
+  }).catch(error => {
+    console.log(error);
+  });
 }
 
 /**

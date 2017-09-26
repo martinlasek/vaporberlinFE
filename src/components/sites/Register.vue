@@ -74,7 +74,7 @@
         } else {
           const user = resp.data;
           this.$store.dispatch('setUser', user);
-          this.$router.push({name: 'profile'});
+          this.$router.push({name: 'login'});
         }
       },
 
