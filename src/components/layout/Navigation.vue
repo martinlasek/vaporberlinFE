@@ -1,7 +1,7 @@
 <template>
   <nav class="container">
     <div class="logo">
-      <router-link to="/">vapor.berlin</router-link>
+      <router-link :to="{name: 'home'}">vapor.berlin</router-link>
     </div>
     <div class="menu">
       <router-link :to="{name: 'topics'}">topics</router-link>
@@ -10,7 +10,7 @@
       <span class="no-border" v-if="isAuthenticated">
         Account
         <ul class="submenu">
-          <li>emailmeso@oftenas.yu</li>
+          <li>{{ userEmail }}</li>
           <li @click="logout">logout</li>
         </ul>
       </span>
@@ -27,6 +27,16 @@
     computed: {
       isAuthenticated() {
         return isAuthenticated();
+      },
+
+      userEmail() {
+        const email = this.$store.getters.getUser.email;
+
+        if (email == '') {
+          return 'no@email.found'
+        }
+        
+        return email;
       }
     },
 

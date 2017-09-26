@@ -28,7 +28,7 @@
   import PageHeader from '../elements/PageHeader.vue'
   import FormError from '../elements/FormError.vue'
   import Spinner from '../elements/Spinner.vue'
-  import {login} from '../../api/api'
+  import {login, fetchUser} from '../../api/api'
 
   export default {
 
@@ -73,6 +73,7 @@
         } else {
           const token = resp.data.token;
           this.$store.dispatch('setToken', token);
+          fetchUser();
           this.$router.push({name: 'topics'});
         }
       },

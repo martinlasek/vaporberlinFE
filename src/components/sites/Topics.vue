@@ -16,9 +16,16 @@
           </div>
         </div>
       </div>
-      <div v-for="topic in list" class="panel panel-default">
-        <div class="panel-body">
-          {{ topic.description }}
+      <hr>
+      <div v-for="topic in descList" class="topic-list">
+        <div class="votes" @click="vote(topic.id)">
+          <span aria-hidden="true" class="glyphicon glyphicon-chevron-up pull-left"></span>
+          <span class="amount">{{ topic.votes }}</span>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            {{ topic.description }}
+          </div>
         </div>
       </div>
     </template>
@@ -29,7 +36,7 @@
 <script>
   import StandardLayout from '../layout/Standard.vue'
   import PageHeader from '../elements/PageHeader.vue'
-  import {fetchTopicList, createTopic} from '../../api/api'
+  import {fetchTopicList, createTopic, voteTopic} from '../../api/api'
 
   export default {
 
@@ -45,6 +52,10 @@
     computed: {
       list() {
         return this.$store.getters.getTopicList;
+      },
+
+      descList() {
+        return this.list.sort((a, b) => b.votes-a.votes)
       }
     },
 
@@ -52,7 +63,12 @@
       create() {
         if (this.newTopic !== '') {
           createTopic(this.newTopic);
+          this.newTopic = '';
         }
+      },
+
+      vote(id) {
+        voteTopic(id);
       }
     },
 

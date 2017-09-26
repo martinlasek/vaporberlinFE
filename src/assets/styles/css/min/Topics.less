@@ -17,7 +17,7 @@
 
     button.btn {
       padding: 16px 12px;
-      background: linear-gradient(135deg, #fabb8f -66%, #f46a78 100%);
+      background: @red;
       border-color: @bloodOrange;
       color: @white;
       outline: none;
@@ -25,6 +25,47 @@
   }
 }
 
-.panel.panel-default {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+.topic-list {
+  align-items: center;
+  display: flex;
+  margin-bottom: 20px;
+
+  .votes {
+    align-items: center;
+    color: @white;
+    display: flex;
+    flex-direction: column;
+    height: 57px;
+    justify-content: center;
+    cursor: pointer;
+    width: 57px;
+
+    &:hover {
+      .glyphicon-chevron-up {
+        animation-name: voteicon;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
+    }
+
+    .amount {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+    }
+  }
+
+  .panel.panel-default {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    margin-bottom: 0;
+    width: 100%;
+  }
+  
+  @keyframes voteicon {
+    0% {margin: 0}
+    50% {margin: -5px 0 5px}
+    75% {margin: -3px 0 3px}
+    100% {margin: 0}
+  }
 }
+
