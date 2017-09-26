@@ -11,7 +11,8 @@ Vue.use(Vuex);
 const state = {
   user: emptyUser,
   userPatch: emptyUser,
-  token: ''
+  token: '',
+  topicList: []
 };
 
 export default new Vuex.Store({

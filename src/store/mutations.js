@@ -24,5 +24,10 @@ export default {
   /** removes the user token from global state */
   [types.CLEAR_TOKEN] (state) {
     state.token = '';
+  },
+
+  /** stores the topic list in global state */
+  [types.SET_TOPIC_LIST] (state, list) {
+    state.topicList = list;
   }
 }

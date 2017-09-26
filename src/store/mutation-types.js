@@ -11,3 +11,6 @@ export const CLEAR_USER = 'clear_user';
 /** token mutation types */
 export const SET_TOKEN = 'set_token';
 export const CLEAR_TOKEN = 'clear_token';
+
+/** topic mutation types */
+export const SET_TOPIC_LIST = 'set_topic_list';

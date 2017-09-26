@@ -9,5 +9,12 @@
 /** returns the user */
 export const getUser = state => state.user;
 
+//pragma mark - Token
+
 /** returns the user token */
 export const getToken = state => state.token;
+
+//pragma mark - Topic
+
+/** returns the topic list */
+export const getTopicList = state => state.topicList;
