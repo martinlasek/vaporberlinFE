@@ -4,7 +4,7 @@
     <template slot="content">
 
       <page-header> TOPICS </page-header>
-      <div class="create-topic">
+      <div v-if="isAuthenticated" class="create-topic">
         <div class="row">
           <div class="col-xs-12">
             <div class="input-group">
@@ -36,7 +36,7 @@
 <script>
   import StandardLayout from '../layout/Standard.vue'
   import PageHeader from '../elements/PageHeader.vue'
-  import {fetchTopicList, createTopic, voteTopic} from '../../api/api'
+  import {fetchTopicList, createTopic, voteTopic, isAuthenticated} from '../../api/api'
 
   export default {
 
@@ -56,7 +56,11 @@
 
       descList() {
         return this.list.sort((a, b) => b.votes-a.votes)
-      }
+      },
+
+      isAuthenticated() {
+        return isAuthenticated();
+      },
     },
 
     methods: {
