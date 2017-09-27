@@ -35,7 +35,7 @@
         if (email == '') {
           return 'no@email.found'
         }
-        
+
         return email;
       }
     },

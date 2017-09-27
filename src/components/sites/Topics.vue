@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      <hr>
+
       <div v-for="topic in descList" class="topic-list">
         <div class="votes" @click="vote(topic.id)">
           <span aria-hidden="true" class="glyphicon glyphicon-chevron-up pull-left"></span>

@@ -3,22 +3,19 @@
     <standard-navigation />
 
     <div class="hero container">
-      <slot name="hero" />
-    </div>
-
-    <div class="container">
       <slot name="content" />
     </div>
 
-    <slot name="footer" />
+    <standard-footer />
   </div>
 </template>
 
 <script>
-  import StandardNavigation from './Navigation'
+  import StandardNavigation from './Navigation';
+  import StandardFooter from './Footer.vue';
 
   export default {
 
-    components: { StandardNavigation }
+    components: { StandardNavigation, StandardFooter }
   }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <standard-layout>
 
-    <template slot="hero">
+    <template slot="content">
 
       <div class="header">
         <h1>VaporBerlin</h1>
