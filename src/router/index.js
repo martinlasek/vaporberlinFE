@@ -6,6 +6,7 @@ import Register from '@/components/sites/Register'
 import Login from '@/components/sites/Login'
 import Imprint from '@/components/sites/Imprint'
 import About from '@/components/sites/About'
+import Version from '@/components/sites/Version'
 
 Vue.use(Router);
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: About
+    },
+    {
+      path: '/versions',
+      name: 'versions',
+      component: Version
     }
   ]
 })

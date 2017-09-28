@@ -65,7 +65,7 @@
 
     methods: {
       create() {
-        if (this.newTopic !== '') {
+        if (this.isCreatable()) {
           createTopic(this.newTopic);
           this.newTopic = '';
         }
@@ -73,6 +73,15 @@
 
       vote(id) {
         voteTopic(id);
+      },
+
+      isCreatable() {
+        let newTopic = this.newTopic;
+        if (newTopic.replace(/\s/g, '').length === 0) {
+          return false
+        }
+
+        return this.newTopic !== '';
       }
     },
 
