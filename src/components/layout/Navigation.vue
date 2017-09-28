@@ -7,13 +7,13 @@
       <router-link :to="{name: 'topics'}">topics</router-link>
       <router-link v-if="!isAuthenticated" :to="{name: 'register'}">register</router-link>
       <router-link v-if="!isAuthenticated" :to="{name: 'login'}">login</router-link>
-      <span class="no-border" v-if="isAuthenticated">
+      <a href="javascript:void(0);" class="no-border" v-if="isAuthenticated">
         account
         <ul class="submenu">
           <li>{{ userEmail }}</li>
           <li @click="logout">logout</li>
         </ul>
-      </span>
+      </a>
     </div>
   </nav>
 </template>

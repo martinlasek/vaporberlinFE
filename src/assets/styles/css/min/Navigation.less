@@ -23,7 +23,7 @@ nav {
   }
 
   a,
-  span {
+  a:focus {
     border-bottom: 1px solid transparent;
     color: #ffffff;
     cursor: pointer;
@@ -33,12 +33,12 @@ nav {
     transition: border-bottom .2s ease-in-out;
     margin: 0 1px;
     overflow: hidden;
+    outline: none;
     padding: 5px 15px;
     position: relative;
 
     &.router-link-exact-active,
-    &:hover,
-    &:focus {
+    &:hover {
       border-bottom: 1px solid #ffffff;
       color: @white;
       text-decoration: none;

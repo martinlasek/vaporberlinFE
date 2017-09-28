@@ -70,21 +70,23 @@ export function login(username, password, callback) {
 }
 
 /**
- * removes token from global state
+ * requests logout and removes token from global state
  */
 export function logout() {
+  const token = store.getters.getToken;
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
   axios
     .post(POST_URL_LOGOUT)
-    .then(resp => {
-      store.dispatch('clearToken');
-      store.dispatch('clearUser');
-      router.push({name: 'login'});
-    })
     .catch(error => {
       const normedResp = normResponse(error);
       console.log("error", normedResp);
     })
   ;
+
+  store.dispatch('clearToken');
+  store.dispatch('clearUser');
+  router.push({name: 'login'});
 }
 
 /**
