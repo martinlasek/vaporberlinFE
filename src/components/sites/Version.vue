@@ -5,15 +5,31 @@
         VERSIONS
       </page-header>
       <div class="versions">
+        <div class="v-1-0-2">
+          <h4 class="text-center">1.0.2</h4>
+          <white-box-small>
+            <ul>
+              <li>
+                • logout now triggers deletion of auth token
+              </li>
+              <li>
+                • design refinements (cards, font, mobile view)
+              </li>
+              <li>
+                • fixed that submenu would not open on mobile
+              </li>
+            </ul>
+          </white-box-small>
+        </div>
         <div class="v-1-0-1">
           <h4 class="text-center">1.0.1</h4>
           <white-box-small>
             <ul>
               <li>
-                • Added versions page
+                • added versions page
               </li>
               <li>
-                • Fixed that empty topics could be created
+                • fixed that empty topics could be created
               </li>
             </ul>
           </white-box-small>

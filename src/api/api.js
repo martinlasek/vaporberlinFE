@@ -13,6 +13,7 @@ const GET_URL_USER = BASE_URL + '/api/user';
 const GET_URL_TOPIC_LIST = BASE_URL + '/api/topic/list';
 const POST_URL_CREATE_TOPIC = BASE_URL + '/api/topic';
 const POST_URL_VOTE_TOPIC = BASE_URL + '/api/topic/vote';
+const POST_URL_LOGOUT = BASE_URL + '/api/logout';
 
 axios.defaults.baseURL = BASE_URL;
 
@@ -72,9 +73,18 @@ export function login(username, password, callback) {
  * removes token from global state
  */
 export function logout() {
-  store.dispatch('clearToken');
-  store.dispatch('clearUser');
-  router.push({name: 'login'});
+  axios
+    .post(POST_URL_LOGOUT)
+    .then(resp => {
+      store.dispatch('clearToken');
+      store.dispatch('clearUser');
+      router.push({name: 'login'});
+    })
+    .catch(error => {
+      const normedResp = normResponse(error);
+      console.log("error", normedResp);
+    })
+  ;
 }
 
 /**

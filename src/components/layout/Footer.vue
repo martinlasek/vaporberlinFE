@@ -6,7 +6,7 @@
       </div>
       <div class="col-xs-4 text-center">
         <router-link :to="{name: 'versions'}">
-          1.0.1
+          1.0.2
         </router-link>
       </div>
       <div class="col-xs-4 text-right">
