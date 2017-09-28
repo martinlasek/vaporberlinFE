@@ -1,4 +1,5 @@
 import * as types from './mutation-types'
+import {emptyUser} from './empty-objects'
 
 /**
  * MUTATIONS
@@ -13,7 +14,7 @@ export default {
 
   /** removes user from global state */
   [types.CLEAR_USER] (state) {
-    state.user = {};
+    state.user = emptyUser;
   },
 
   /** stores the user token in global state */

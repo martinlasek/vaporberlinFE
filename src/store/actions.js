@@ -9,6 +9,7 @@ import * as types from './mutation-types'
 
 /** invokes the mutation to set the user */
 export const setUser = (state, user) => {
+  delete user.password;
   state.commit(types.SET_USER, user);
 };
 
