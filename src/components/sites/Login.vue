@@ -3,17 +3,19 @@
   <standard-layout>
     <template slot="content">
 
-      <page-header> LOGIN </page-header>
+      <div class="login">
+        <page-header> LOGIN </page-header>
 
-      <white-box-small>
+        <white-box-small>
 
-        <form-error purpose="danger" v-if="hasErrors" :errorMessages="errorMessages"/>
-        <email-field toEmit="updateEmail" @updateEmail="val => email = val"/>
-        <password-field toEmit="updatePassword" @updatePassword="val => password = val"/>
-        <submit-button text="Login" toEmit="submit" @submit="login" />
-        <spinner :isActive="spinner" />
+          <form-error purpose="danger" v-if="hasErrors" :errorMessages="errorMessages"/>
+          <email-field toEmit="updateEmail" @updateEmail="val => email = val"/>
+          <password-field toEmit="updatePassword" @updatePassword="val => password = val"/>
+          <submit-button text="Login" toEmit="submit" @submit="login" />
+          <spinner :isActive="spinner" />
 
-      </white-box-small>
+        </white-box-small>
+      </div>
 
     </template>
   </standard-layout>
@@ -85,3 +87,7 @@
     }
   }
 </script>
+
+<style lang="less" scoped>
+  @import "../../assets/styles/css/min/Login.less";
+</style>

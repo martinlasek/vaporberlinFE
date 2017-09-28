@@ -19,7 +19,7 @@
             <button class="btn">
               <span class="glyphicon glyphicon-chevron-up pull-left" aria-hidden="true"></span>
                 <span class="quote pull-left">
-                  "How to set up vapor"
+                  "How to implement a route"
                 </span>
             </button>
           </template>

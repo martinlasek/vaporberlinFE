@@ -6,7 +6,6 @@
 
 <script>
   require('./assets/styles/css/bootstrap.min.css');
-  require('./assets/styles/css/fonts.css');
 
   export default {
     name: 'app'

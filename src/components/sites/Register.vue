@@ -3,17 +3,19 @@
   <standard-layout>
     <template slot="content">
 
-      <page-header> REGISTER TO VOTE TOPICS! </page-header>
+      <div class="register">
+        <page-header> REGISTER TO VOTE TOPICS! </page-header>
 
-      <white-box-small>
+        <white-box-small>
 
-        <form-error purpose="danger" v-if="hasErrors" :errorMessages="errorMessages"/>
-        <email-field toEmit="updatedEmail" @updatedEmail="val => email = val" />
-        <password-field toEmit="updatePassword" @updatePassword="val => password = val" />
-        <submit-button text="Register" toEmit="submit" @submit="register"/>
-        <spinner :isActive="spinner" />
+          <form-error purpose="danger" v-if="hasErrors" :errorMessages="errorMessages"/>
+          <email-field toEmit="updatedEmail" @updatedEmail="val => email = val" />
+          <password-field toEmit="updatePassword" @updatePassword="val => password = val" />
+          <submit-button text="Register" toEmit="submit" @submit="register"/>
+          <spinner :isActive="spinner" />
 
-      </white-box-small>
+        </white-box-small>
+      </div>
 
     </template>
   </standard-layout>
@@ -85,3 +87,7 @@
     }
   }
 </script>
+
+<style lang="less" scoped>
+  @import "../../assets/styles/css/min/Register.less";
+</style>

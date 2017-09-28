@@ -8,8 +8,9 @@
         <div class="imprint-content">
           <h4>developed by</h4>
           <h2>Martin J. Lasek</h2>
-          <p><a href="mailto:kontakt@martinlasek.de">kontakt@martinlasek.de</a></p>
-          <p>
+          <p class="person">iOS/Web Fullstack Developer</p>
+          <p><a class="mail" href="mailto:kontakt@martinlasek.de">kontakt@martinlasek.de</a></p>
+          <p class="social">
             <a href="https://github.com/MartinLasek" target="_blank">Github</a> /
             <a href="https://twitter.com/martinlasek" target="_blank">Twitter</a> /
             <a href="https://www.instagram.com/martin_lasek/" target="_blank">Instagram</a>
