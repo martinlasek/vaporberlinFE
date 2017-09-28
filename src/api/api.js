@@ -2,10 +2,10 @@ import axios from 'axios';
 import store from '../store/index';
 import router from '../router/index';
 
-const BASE_URL = 'http://127.0.0.1:8020';
+//const BASE_URL = 'http://127.0.0.1:8020';
 
 // use for PRODUCTION
-//const BASE_URL = '';
+const BASE_URL = '';
 
 const POST_URL_REGISTER = BASE_URL + '/api/user';
 const POST_URL_LOGIN = BASE_URL + '/api/login';
@@ -53,8 +53,7 @@ export function register(username, password, callback) {
 export function login(username, password, callback) {
 
   const un = username.toLowerCase();
-  const pw = password.toLowerCase();
-  axios.defaults.headers.common['Authorization'] = 'Basic ' + Buffer.from(un + ':' + pw).toString('base64');
+  axios.defaults.headers.common['Authorization'] = 'Basic ' + Buffer.from(un + ':' + password).toString('base64');
 
   axios
     .post(POST_URL_LOGIN)
