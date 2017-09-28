@@ -7,18 +7,16 @@
       <div class="versions">
         <div class="v-1-0-1">
           <h4 class="text-center">1.0.1</h4>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <ul>
-                <li>
-                  • Added versions page
-                </li>
-                <li>
-                  • Fixed that empty topics could be created
-                </li>
-              </ul>
-            </div>
-          </div>
+          <white-box-small>
+            <ul>
+              <li>
+                • Added versions page
+              </li>
+              <li>
+                • Fixed that empty topics could be created
+              </li>
+            </ul>
+          </white-box-small>
         </div>
       </div>
     </template>
@@ -28,9 +26,10 @@
 <script>
   import StandardLayout from '../layout/Standard.vue'
   import PageHeader from '../elements/PageHeader.vue'
+  import WhiteBoxSmall from '../elements/WhiteBoxSmall.vue'
 
   export default {
-    components: { PageHeader, StandardLayout }
+    components: { PageHeader, StandardLayout, WhiteBoxSmall }
   }
 </script>
 
