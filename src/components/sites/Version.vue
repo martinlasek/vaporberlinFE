@@ -5,35 +5,17 @@
         VERSIONS
       </page-header>
       <div class="versions">
-        <div class="v-1-0-2">
-          <h4 class="text-center">1.0.2</h4>
+        <div v-for="version in versions" :class="createVersionClass(version)">
+          <h4 class="text-center">{{ version.number }}</h4>
           <white-box-small>
             <ul>
-              <li>
-                • logout now triggers deletion of auth token
-              </li>
-              <li>
-                • design refinements (cards, font, mobile view)
-              </li>
-              <li>
-                • fixed that submenu would not open on mobile
+              <li v-for="change in version.changes">
+                {{ change }}
               </li>
             </ul>
           </white-box-small>
         </div>
-        <div class="v-1-0-1">
-          <h4 class="text-center">1.0.1</h4>
-          <white-box-small>
-            <ul>
-              <li>
-                • added versions page
-              </li>
-              <li>
-                • fixed that empty topics could be created
-              </li>
-            </ul>
-          </white-box-small>
-        </div>
+
       </div>
     </template>
   </standard-layout>
@@ -43,9 +25,22 @@
   import StandardLayout from '../layout/Standard.vue'
   import PageHeader from '../elements/PageHeader.vue'
   import WhiteBoxSmall from '../elements/WhiteBoxSmall.vue'
+  import {versions} from '../../utils/versions';
 
   export default {
-    components: { PageHeader, StandardLayout, WhiteBoxSmall }
+    components: { PageHeader, StandardLayout, WhiteBoxSmall },
+
+    data() {
+      return {
+        versions: versions
+      }
+    },
+
+    methods: {
+      createVersionClass(version) {
+        return version.number.split('.').join('-');
+      }
+    }
   }
 </script>
 

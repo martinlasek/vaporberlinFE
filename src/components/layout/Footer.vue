@@ -6,7 +6,7 @@
       </div>
       <div class="col-xs-4 text-center">
         <router-link :to="{name: 'versions'}">
-          1.0.2
+          {{ version }}
         </router-link>
       </div>
       <div class="col-xs-4 text-right">
@@ -16,6 +16,18 @@
     </div>
   </div>
 </template>
+
+<script>
+  import {versions} from '../../utils/versions'
+
+  export default {
+    computed: {
+      version() {
+        return versions[0].number
+      }
+    }
+  }
+</script>
 
 <style lang="less" scoped>
   @import "../../assets/styles/css/min/Footer.less";
