@@ -4,6 +4,11 @@
     <template slot="content">
 
       <page-header> TOPICS </page-header>
+
+      <hint v-if="!isAuthenticated">
+        login to create and vote a topic
+      </hint>
+
       <div v-if="isAuthenticated" class="create-topic">
         <div class="row">
           <div class="col-xs-12">
@@ -36,11 +41,12 @@
 <script>
   import StandardLayout from '../layout/Standard.vue'
   import PageHeader from '../elements/PageHeader.vue'
+  import Hint from '../elements/Hint.vue';
   import {fetchTopicList, createTopic, voteTopic, isAuthenticated} from '../../api/api'
 
   export default {
 
-    components: { StandardLayout, PageHeader },
+    components: { StandardLayout, PageHeader, Hint },
 
     data() {
       return {
@@ -60,7 +66,7 @@
 
       isAuthenticated() {
         return isAuthenticated();
-      },
+      }
     },
 
     methods: {
@@ -77,6 +83,7 @@
 
       isCreatable() {
         let newTopic = this.newTopic;
+
         if (newTopic.replace(/\s/g, '').length === 0) {
           return false
         }
