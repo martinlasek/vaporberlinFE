@@ -6,7 +6,7 @@
       <page-header> TOPICS </page-header>
 
       <hint v-if="!isAuthenticated">
-        login to create and vote a topic
+        login to create or vote a topic
       </hint>
 
       <div v-if="isAuthenticated" class="create-topic">

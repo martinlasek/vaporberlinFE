@@ -3,9 +3,12 @@
  */
 export const versions = [
   {
-    number: '1.0.3',
+    number: '1.1.0',
     changes: [
-      'added a hint to the topic site'
+      'enter on registration or login now triggers submit',
+      'a hint on topics explains how to vote or create one',
+      'a label under votes appears if you voted for a topic',
+      'fix a bug where registration was case sensitive'
     ]
   },
 

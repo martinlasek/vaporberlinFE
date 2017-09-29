@@ -12,11 +12,13 @@
         type="password"
         :class="['form-control', { 'hidden': showPassword }]"
         v-model="password"
+        @keyup.enter="fireEnter"
       >
       <input
         type="text"
         :class="['form-control', { 'hidden': !showPassword }]"
         v-model="password"
+        @keyup.enter="fireEnter"
       >
       <span class="input-group-btn">
         <button class="btn" @click="togglePassword">
@@ -53,6 +55,10 @@
     methods: {
       togglePassword() {
         this.showPassword = !this.showPassword;
+      },
+
+      fireEnter() {
+        this.$emit('enter', this.password)
       }
     },
 

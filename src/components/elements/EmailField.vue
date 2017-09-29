@@ -9,6 +9,7 @@
       type="text"
       class="form-control"
       v-model="email"
+      @keyup.enter="fireEnter"
     >
     <span :class="{'glyphicon glyphicon-ok': true, 'visible': !errors.has('email') && showIsValid}"></span>
     <span :class="{'glyphicon glyphicon-remove': true, 'visible': errors.has('email')}"></span>
@@ -32,6 +33,12 @@
     data() {
       return {
         email: ''
+      }
+    },
+
+    methods: {
+      fireEnter() {
+        this.$emit('enter', this.email)
       }
     },
 
