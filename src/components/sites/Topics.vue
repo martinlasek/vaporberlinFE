@@ -13,7 +13,13 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="input-group">
-            <input type="text" class="form-control create-field" placeholder="How to set up a project.." v-model="newTopic">
+            <input
+              type="text"
+              class="form-control create-field"
+              placeholder="How to set up a project.."
+              v-model="newTopic"
+              @keyup.enter="create"
+            >
             <span class="input-group-btn">
               <button class="btn btn-default" type="button" @click="create">Add</button>
             </span>
@@ -26,6 +32,7 @@
         <div class="votes" @click="vote(topic.id)">
           <span aria-hidden="true" class="glyphicon glyphicon-chevron-up pull-left"></span>
           <span class="amount">{{ topic.votes }}</span>
+          <span v-if="isAuthenticated && hasVoted(topic)" class="voted"> voted </span>
         </div>
         <div class="panel panel-default">
           <div class="panel-body">
@@ -61,11 +68,15 @@
       },
 
       descList() {
-        return this.list.sort((a, b) => b.votes-a.votes)
+        return this.list.sort((a, b) => b.votes - a.votes);
       },
 
       isAuthenticated() {
         return isAuthenticated();
+      },
+
+      user() {
+        return this.$store.getters.getUser;
       }
     },
 
@@ -89,6 +100,11 @@
         }
 
         return this.newTopic !== '';
+      },
+
+      hasVoted(topic) {
+        const res = topic.voter.find(userId => userId === this.user.id);
+        return res !== undefined;
       }
     },
 

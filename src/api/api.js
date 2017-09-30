@@ -27,7 +27,8 @@ axios.defaults.baseURL = BASE_URL;
  */
 export function register(username, password, callback) {
 
-  const json = {email: username, password: password};
+  const un = username.toLowerCase();
+  const json = {email: un, password: password};
 
   axios
     .post(

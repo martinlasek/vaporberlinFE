@@ -9,7 +9,7 @@
           {{ version }}
         </router-link>
       </div>
-      <div class="col-xs-4 text-right">
+      <div class="col-xs-4 text-right sites">
         <router-link :to="{name: 'about'}">About</router-link>
         <router-link :to="{name: 'imprint'}">Imprint</router-link>
       </div>
