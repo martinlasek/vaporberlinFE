@@ -9,8 +9,8 @@
         <white-box-small>
 
           <form-error purpose="danger" v-if="hasErrors" :errorMessages="errorMessages"/>
-          <email-field toEmit="updatedEmail" @updatedEmail="val => email = val" />
-          <password-field toEmit="updatePassword" @updatePassword="val => password = val" />
+          <email-field toEmit="updatedEmail" @updatedEmail="val => email = val" @enter="register"/>
+          <password-field toEmit="updatePassword" @updatePassword="val => password = val" @enter="register"/>
           <submit-button text="Register" toEmit="submit" @submit="register"/>
           <spinner :isActive="spinner" />
 
