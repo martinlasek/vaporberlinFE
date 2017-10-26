@@ -3,6 +3,13 @@
  */
 export const versions = [
   {
+    number: '1.1.1',
+    changes: [
+      'fix a bug where you could register and login with just one character and no password'
+    ]
+  },
+
+  {
     number: '1.1.0',
     changes: [
       'enter on registration or login now triggers submit',
