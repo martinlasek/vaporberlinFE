@@ -7,6 +7,7 @@ import Login from '@/components/sites/Login'
 import Imprint from '@/components/sites/Imprint'
 import About from '@/components/sites/About'
 import Version from '@/components/sites/Version'
+import Profile from '@/components/sites/Profile/Profile'
 
 Vue.use(Router);
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile
     },
     {
       path: '/imprint',
