@@ -5,17 +5,15 @@
         <page-header> PROFILE </page-header>
 
         <div class="row">
-          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
             <div class="box">
               <div class="left">
-                <ul>
-                  <li>
-                    general
-                  </li>
-                  <li>
-                    security
-                  </li>
-                </ul>
+                <span :class="{'active': activeTab === 'general'}" @click="activate('general')">
+                  General
+                </span>
+                <span :class="{'active': activeTab === 'security'}" @click="activate('security')">
+                  Security
+                </span>
               </div>
               <div class="right">
                 <general v-if="activeTab === 'general'" />
@@ -32,7 +30,6 @@
 <script>
   import StandardLayout from '../../layout/Standard.vue'
   import PageHeader from '../../elements/PageHeader.vue'
-
   import General from './General.vue'
   import Security from './Security.vue'
 

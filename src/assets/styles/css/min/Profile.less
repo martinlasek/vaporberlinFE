@@ -3,5 +3,32 @@
 .profile .box {
   background-color: @white;
   border-radius: 4px;
-  padding: 15px;
+  border: 1px solid @white;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  display: flex;
+  overflow: hidden;
+
+  .left {
+    border-right: 1px solid @gray;
+    width: 33%;
+
+    span {
+      display: block;
+      border-bottom: 1px solid @gray;
+      color: @bloodOrange;
+      cursor: pointer;
+      padding: 10px 15px;
+      transition: background-color .1s ease-in-out, color .1s ease-in-out;
+
+      &:hover, &.active {
+        background-color: @bloodOrange;
+        color: @white;
+      }
+    }
+  }
+
+  .right {
+    padding: 15px;
+    width: 66%;
+  }
 }
