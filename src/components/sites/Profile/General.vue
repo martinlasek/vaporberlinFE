@@ -4,16 +4,17 @@
       <div class="col-xs-12">
         <text-field
           toEmit="change"
-          @change="val => patchData.firstName = val"
-          fieldName="firstname" :text="getValOf('firstName')"
+          @change="val => patchData.firstname = val"
+          fieldName="firstname"
+          :text="getValOf('firstname')"
         />
       </div>
       <div class="col-xs-12">
         <text-field
           toEmit="change"
-          @change="val => patchData.lastName = val"
+          @change="val => patchData.lastname = val"
           fieldName="lastname"
-          :text="getValOf('lastName')"
+          :text="getValOf('lastname')"
         />
       </div>
       <div class="col-xs-12">
@@ -35,21 +36,23 @@
       <div class="col-xs-12">
         <custom-button text="Save" @click.native="save"/>
       </div>
-    </div>
-    <div class="row">
+      <spinner :isActive="spinner" />
     </div>
   </div>
 </template>
 <script>
   import TextField from '../../elements/TextField.vue'
   import CustomButton from '../../elements/CustomButton.vue'
+  import Spinner from '../../elements/Spinner.vue'
+  import {updateUser} from '../../../api/api'
 
   export default {
-    components: { TextField, CustomButton },
+    components: { TextField, CustomButton, Spinner },
 
     data() {
       return {
-        patchData: {}
+        patchData: {},
+        spinner: false
       }
     },
 
@@ -62,7 +65,18 @@
       },
 
       save() {
-        console.log("patch object: ", this.patchData);
+        this.spinner = true;
+        updateUser(this.patchData, this.handleResponse)
+      },
+
+      handleResponse(resp) {
+        this.spinner = false;
+
+        if (resp.error) {
+          console.log(resp.messages);
+        } else {
+          this.$store.dispatch('setUser', resp.data);
+        }
       }
     }
   }

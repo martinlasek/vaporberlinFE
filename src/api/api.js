@@ -14,6 +14,7 @@ const GET_URL_TOPIC_LIST = BASE_URL + '/api/topic/list';
 const POST_URL_CREATE_TOPIC = BASE_URL + '/api/topic';
 const POST_URL_VOTE_TOPIC = BASE_URL + '/api/topic/vote';
 const POST_URL_LOGOUT = BASE_URL + '/api/logout';
+const PATCH_URL_USER = BASE_URL + '/api/user';
 
 axios.defaults.baseURL = BASE_URL;
 
@@ -90,9 +91,9 @@ export function logout() {
   router.push({name: 'login'});
 }
 
-/**
- * fetches the user from api
- */
+// pragma mark - user
+
+/** fetches the user from api */
 export function fetchUser() {
   const token = store.getters.getToken;
   axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
@@ -110,6 +111,26 @@ export function fetchUser() {
   ;
 }
 
+/**  */
+export function updateUser(patchData, callback) {
+  const token = store.getters.getToken;
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+  axios
+    .patch(
+      PATCH_URL_USER,
+      patchData
+    ).then(resp => {
+      const normedResp = normResponse(resp);
+      callback(normedResp)
+    }).catch(error => {
+      const normedResp = normResponse(error);
+      console.log('error', normedResp);
+    })
+  ;
+}
+
+// pragma mark - topic
 /**
  * fetches topic list from api
  */
