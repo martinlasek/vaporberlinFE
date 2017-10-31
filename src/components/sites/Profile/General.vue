@@ -47,14 +47,6 @@
   export default {
     components: { TextField, CustomButton },
 
-    computed: {
-      firstName() {
-        const fn = this.$store.getters.getUser.firstName;
-        if (fn === null) return '';
-        return fn;
-      }
-    },
-
     data() {
       return {
         patchData: {}
