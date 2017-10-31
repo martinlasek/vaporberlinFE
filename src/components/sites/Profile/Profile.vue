@@ -13,7 +13,7 @@
                 </span>
               </div>
               <div class="right">
-                <general v-if="activeTab === 'general'" />
+                <general v-if="isActive('general')" />
               </div>
             </div>
           </div>
@@ -46,6 +46,10 @@
       activeClass(tab) {
         if (this.activeTab === tab) return 'active';
         return  '';
+      },
+
+      isActive(tab) {
+        return this.activeTab === tab;
       }
     }
   }
