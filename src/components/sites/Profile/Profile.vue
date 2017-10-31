@@ -8,16 +8,12 @@
           <div class="col-xs-12 col-sm-8 col-sm-offset-2">
             <div class="box">
               <div class="left">
-                <span :class="{'active': activeTab === 'general'}" @click="activate('general')">
+                <span :class="activeClass('general')" @click="activate('general')">
                   General
-                </span>
-                <span :class="{'active': activeTab === 'security'}" @click="activate('security')">
-                  Security
                 </span>
               </div>
               <div class="right">
                 <general v-if="activeTab === 'general'" />
-                <security v-if="activeTab === 'security'" />
               </div>
             </div>
           </div>
@@ -31,10 +27,9 @@
   import StandardLayout from '../../layout/Standard.vue'
   import PageHeader from '../../elements/PageHeader.vue'
   import General from './General.vue'
-  import Security from './Security.vue'
 
   export default {
-    components: { StandardLayout, PageHeader, General, Security },
+    components: { StandardLayout, PageHeader, General },
 
     data() {
       return {
@@ -46,6 +41,11 @@
 
       activate(tab) {
         this.activeTab = tab;
+      },
+
+      activeClass(tab) {
+        if (this.activeTab === tab) return 'active';
+        return  '';
       }
     }
   }

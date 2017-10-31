@@ -4,11 +4,11 @@
       {{ label }}
     </label>
     <input
-      name="email"
+      :name="fieldName"
       type="text"
       class="form-control"
       v-model="value"
-      @keyup.enter="fireEnter"
+      @change="fireEnter"
     >
   </div>
 </template>
@@ -18,25 +18,25 @@
 
     props: {
       toEmit: {required: true},
-      label: {required: true},
-      fieldName: {required: true}
+      fieldName: {required: true},
+      text: {required: true}
+    },
+
+    computed: {
+      label() {
+        return this.fieldName.toUpperCase()
+      }
     },
 
     data() {
       return {
-        value: ''
+        value: this.text
       }
     },
 
     methods: {
       fireEnter() {
-        this.$emit('enter', this.value)
-      }
-    },
-
-    watch: {
-      email(val) {
-        this.$emit(this.toEmit, val);
+        this.$emit('change', this.value)
       }
     }
   }
