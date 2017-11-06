@@ -17,10 +17,12 @@
           label="new email"
         />
       </div>
+      <spinner :isActive="spinner" />
+    </div>
+    <div class="row confirm-area">
       <div class="col-xs-12">
         <custom-button text="Save" @click.native="save"/>
       </div>
-      <spinner :isActive="spinner" />
     </div>
   </div>
 </template>

@@ -9,6 +9,7 @@
     border: 1px solid @white;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
     display: flex;
+    min-height: 350px;
     overflow: hidden;
 
     .left {
@@ -31,9 +32,16 @@
     }
 
     .right {
-      padding: 15px;
+      padding: 15px 15px 60px;
       position: relative;
       width: 66%;
+
+      .confirm-area {
+        bottom: 0;
+        position: absolute;
+        width: 100%;
+        padding: 15px 0;
+      }
     }
   }
 }

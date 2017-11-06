@@ -10,10 +10,12 @@
           :disabled="true"
         />
       </div>
+      <spinner :isActive="spinner" />
+    </div>
+    <div class="row confirm-area">
       <div class="col-xs-12">
         <custom-button text="Delete" @click.native="deleteUser"/>
       </div>
-      <spinner :isActive="spinner" />
     </div>
   </div>
 </template>
