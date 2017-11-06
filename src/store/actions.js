@@ -7,10 +7,15 @@ import * as types from './mutation-types'
 
 //pragma mark - User
 
-/** invokes the mutation to set the user */
+/** store: user */
 export const setUser = (state, user) => {
   delete user.password;
   state.commit(types.SET_USER, user);
+};
+
+/** store: user email */
+export const setUserEmail = (state, email) => {
+  state.commit(types.SET_USER_EMAIL, email);
 };
 
 /** invokes the mutation to clear the user */

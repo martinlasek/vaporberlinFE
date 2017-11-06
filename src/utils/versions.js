@@ -5,7 +5,7 @@ export const versions = [
   {
     number: '1.2.0',
     changes: [
-      'profile: you can now set personal data'
+      'profile: set personal data, change your email, delete your account'
     ]
   },
   {

@@ -7,27 +7,34 @@ import {emptyUser} from './empty-objects'
  */
 export default {
 
-  /** stores user in global state */
+  // pragma mark - user
+
+  /** stores: user */
   [types.SET_USER] (state, user) {
     state.user = user;
   },
 
-  /** removes user from global state */
+  /** stores: user email  */
+  [types.SET_USER_EMAIL] (state, email) {
+    state.user.email = email;
+  },
+
+  /** removes: user */
   [types.CLEAR_USER] (state) {
     state.user = emptyUser;
   },
 
-  /** stores the user token in global state */
+  /** stores: user token */
   [types.SET_TOKEN] (state, token) {
     state.token = token;
   },
 
-  /** removes the user token from global state */
+  /** removes: user token */
   [types.CLEAR_TOKEN] (state) {
     state.token = '';
   },
 
-  /** stores the topic list in global state */
+  /** stores: topic list */
   [types.SET_TOPIC_LIST] (state, list) {
     state.topicList = list;
   }

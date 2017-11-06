@@ -1,14 +1,15 @@
 <template>
   <div class="form-group">
     <label class="label">
-      {{ label }}
+      {{ generatedLabel }}
     </label>
     <input
       :name="fieldName"
       type="text"
       class="form-control"
-      v-model="value"
+      :value="text"
       @change="fireEnter"
+      :disabled="disabled"
     >
   </div>
 </template>
@@ -19,12 +20,15 @@
     props: {
       toEmit: {required: true},
       fieldName: {required: true},
-      text: {required: true}
+      text: {default: ''},
+      disabled: {default: false},
+      label: {default: ''}
     },
 
     computed: {
-      label() {
-        return this.fieldName.toUpperCase()
+      generatedLabel() {
+        if (this.label === '') return this.fieldName.toUpperCase();
+        return this.label.toUpperCase();
       }
     },
 
@@ -35,8 +39,8 @@
     },
 
     methods: {
-      fireEnter() {
-        this.$emit('change', this.value)
+      fireEnter(val) {
+        this.$emit('change', val.target.value)
       }
     }
   }

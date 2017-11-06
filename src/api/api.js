@@ -2,10 +2,10 @@ import axios from 'axios';
 import store from '../store/index';
 import router from '../router/index';
 
-const BASE_URL = 'http://127.0.0.1:8020';
+//const BASE_URL = 'http://127.0.0.1:8020';
 
-// use for PRODUCTION
-//const BASE_URL = '';
+/** use for PRODUCTION */
+const BASE_URL = '';
 
 const POST_URL_REGISTER = BASE_URL + '/api/user';
 const POST_URL_LOGIN = BASE_URL + '/api/login';
@@ -15,6 +15,8 @@ const POST_URL_CREATE_TOPIC = BASE_URL + '/api/topic';
 const POST_URL_VOTE_TOPIC = BASE_URL + '/api/topic/vote';
 const POST_URL_LOGOUT = BASE_URL + '/api/logout';
 const PATCH_URL_USER = BASE_URL + '/api/user';
+const PATCH_URL_USER_EMAIL = BASE_URL + '/api/user/email';
+const DELETE_URL_USER = BASE_URL + '/api/user';
 
 axios.defaults.baseURL = BASE_URL;
 
@@ -93,7 +95,7 @@ export function logout() {
 
 // pragma mark - user
 
-/** fetches the user from api */
+/** fetches user */
 export function fetchUser() {
   const token = store.getters.getToken;
   axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
@@ -111,7 +113,7 @@ export function fetchUser() {
   ;
 }
 
-/**  */
+/** patches user */
 export function updateUser(patchData, callback) {
   const token = store.getters.getToken;
   axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
@@ -129,6 +131,43 @@ export function updateUser(patchData, callback) {
     })
   ;
 }
+
+/** patches user */
+export function updateUserEmail(patchData, callback) {
+  const token = store.getters.getToken;
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+  axios
+    .patch(
+      PATCH_URL_USER_EMAIL,
+      patchData
+    ).then(resp => {
+      const normedResp = normResponse(resp);
+      callback(normedResp)
+    }).catch(error => {
+      const normedResp = normResponse(error);
+      console.log('error', normedResp);
+    })
+  ;
+}
+
+export function deleteUser(callback) {
+  const token = store.getters.getToken;
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+  axios
+    .delete(DELETE_URL_USER)
+    .then(resp => {
+      const normedResp = normResponse(resp);
+      callback(normedResp)
+    })
+    .catch(error => {
+      const normedResp = normResponse(error);
+      console.log('error', normedResp);
+    })
+  ;
+}
+
 
 // pragma mark - topic
 /**

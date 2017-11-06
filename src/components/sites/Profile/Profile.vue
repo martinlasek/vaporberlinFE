@@ -11,13 +11,22 @@
                 <span :class="activeClass('general')" @click="activate('general')">
                   General
                 </span>
+                <span :class="activeClass('email')" @click="activate('email')">
+                  Email
+                </span>
+                <span :class="activeClass('deleteUser')" @click="activate('deleteUser')">
+                  Delete
+                </span>
               </div>
               <div class="right">
                 <general v-if="isActive('general')" />
+                <email v-if="isActive('email')" />
+                <delete-user v-if="isActive('deleteUser')" />
               </div>
             </div>
           </div>
         </div>
+        
       </div>
     </template>
   </standard-layout>
@@ -27,9 +36,11 @@
   import StandardLayout from '../../layout/Standard.vue'
   import PageHeader from '../../elements/PageHeader.vue'
   import General from './General.vue'
+  import Email from './Email.vue'
+  import DeleteUser from './DeleteUser.vue'
 
   export default {
-    components: { StandardLayout, PageHeader, General },
+    components: { StandardLayout, PageHeader, General, Email, DeleteUser },
 
     data() {
       return {
