@@ -7,20 +7,21 @@ import router from '../router/index';
 /** use for PRODUCTION */
 const BASE_URL = '';
 
-const POST_URL_REGISTER = BASE_URL + '/api/user';
 const POST_URL_LOGIN = BASE_URL + '/api/login';
-const GET_URL_USER = BASE_URL + '/api/user';
-const GET_URL_TOPIC_LIST = BASE_URL + '/api/topic/list';
-const POST_URL_CREATE_TOPIC = BASE_URL + '/api/topic';
-const POST_URL_VOTE_TOPIC = BASE_URL + '/api/topic/vote';
 const POST_URL_LOGOUT = BASE_URL + '/api/logout';
+const POST_URL_REGISTER = BASE_URL + '/api/user';
+const GET_URL_USER = BASE_URL + '/api/user';
 const PATCH_URL_USER = BASE_URL + '/api/user';
 const PATCH_URL_USER_EMAIL = BASE_URL + '/api/user/email';
 const DELETE_URL_USER = BASE_URL + '/api/user';
+const GET_URL_TOPIC_LIST = BASE_URL + '/api/topic/list';
+const POST_URL_CREATE_TOPIC = BASE_URL + '/api/topic';
+const POST_URL_VOTE_TOPIC = BASE_URL + '/api/topic/vote';
+const GET_URL_UPCOMING_MEETUP = BASE_URL + '/api/meetup/upcoming';
 
 axios.defaults.baseURL = BASE_URL;
 
-//pragma mark - public
+//pragma mark - user
 
 /**
  *
@@ -93,7 +94,6 @@ export function logout() {
   router.push({name: 'login'});
 }
 
-// pragma mark - user
 
 /** fetches user */
 export function fetchUser() {
@@ -168,8 +168,27 @@ export function deleteUser(callback) {
   ;
 }
 
+// pragma mark - meetup
+
+export function fetchUpcomingMeetup() {
+
+  axios
+    .get(GET_URL_UPCOMING_MEETUP)
+    .then(resp => {
+      /** pass resp to callback */
+      const normedResp = normResponse(resp);
+      store.dispatch('setUpcomingMeetup', normedResp.data)
+    })
+    .catch(error => {
+      const normedResp = normResponse(error);
+      console.log('error', normedResp);
+    })
+  ;
+}
+
 
 // pragma mark - topic
+
 /**
  * fetches topic list from api
  */
@@ -268,6 +287,13 @@ function normResponse(resp) {
 
     if (resp.data.status === 406) {
       normedResponse.status = 406;
+      normedResponse.error = true;
+      normedResponse.messages = [resp.data.message];
+      return normedResponse;
+    }
+
+    if (resp.data.status === 404) {
+      normedResponse.status = 404;
       normedResponse.error = true;
       normedResponse.messages = [resp.data.message];
       return normedResponse;

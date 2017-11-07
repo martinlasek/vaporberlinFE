@@ -37,7 +37,12 @@ export const clearToken = (state) => {
 
 //pragma mark - Topic
 
-/** invokes the mutation to set the topic list */
+/** store: topic list */
 export const setTopicList = (state, list) => {
   state.commit(types.SET_TOPIC_LIST, list);
+};
+
+/** store: upcoming meetup */
+export const setUpcomingMeetup = (state, upcomingMeetup) => {
+  state.commit(types.SET_UPCOMING_MEETUP, upcomingMeetup);
 };

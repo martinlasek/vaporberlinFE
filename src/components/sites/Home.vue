@@ -25,7 +25,11 @@
           </template>
         </box-link>
       </div>
-      
+
+      <div class="upcoming-meetup">
+        <h2>UPCOMING MEETUP</h2>
+      </div>
+
     </template>
 
   </standard-layout>
@@ -34,10 +38,15 @@
 <script>
   import StandardLayout from '../layout/Standard'
   import boxLink from '../elements/BoxLink'
+  import {fetchUpcomingMeetup} from '../../api/api'
 
   export default {
 
-    components: { StandardLayout, boxLink }
+    components: { StandardLayout, boxLink },
+
+    mounted() {
+      fetchUpcomingMeetup();
+    }
   }
 </script>
 

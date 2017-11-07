@@ -8,3 +8,13 @@ export const emptyUser = {
   website: '',
   company: ''
 };
+
+export const emptyMeetup = {
+  id: '',
+  date: '',
+  upcoming: '',
+  title: '',
+  timeStart: '',
+  timeEnd: '',
+  link: ''
+};

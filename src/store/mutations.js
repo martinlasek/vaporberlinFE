@@ -7,7 +7,7 @@ import {emptyUser} from './empty-objects'
  */
 export default {
 
-  // pragma mark - user
+// pragma mark - user
 
   /** stores: user */
   [types.SET_USER] (state, user) {
@@ -24,6 +24,8 @@ export default {
     state.user = emptyUser;
   },
 
+// pragma mark - token
+
   /** stores: user token */
   [types.SET_TOKEN] (state, token) {
     state.token = token;
@@ -34,8 +36,16 @@ export default {
     state.token = '';
   },
 
+// pragma mark - topic
+
   /** stores: topic list */
   [types.SET_TOPIC_LIST] (state, list) {
     state.topicList = list;
+  },
+
+// pragma mark - topic
+
+  [types.SET_UPCOMING_MEETUP] (state, upcomingMeetup) {
+    state.meetup = upcomingMeetup;
   }
 }

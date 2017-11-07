@@ -10,10 +10,17 @@
     }
 
     .boxes {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
       width: 100%;
+
+      .box-link:first-child {
+        float: left;
+      }
+
+      .box-link:last-child {
+        float: right;
+      }
     }
   }
 }
+
+@import "../min992/Hero992";
