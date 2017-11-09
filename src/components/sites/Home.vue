@@ -26,8 +26,43 @@
         </box-link>
       </div>
 
-      <div class="upcoming-meetup">
-        <h2>UPCOMING MEETUP</h2>
+      <div class="upcoming-meetup-wrapper">
+        <page-header>
+          UPCOMING MEETUP
+        </page-header>
+        <div class="upcoming-meetup">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <div class="title">
+                <h2 class="header">title</h2>
+                <h3> <a :href="meetup.link" target="_blank"> {{ meetup.title }} </a></h3>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+              <div class="date">
+                <h2 class="header">date</h2>
+                <h3>{{ meetup.date }}</h3>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+              <div class="time">
+                <h2 class="header">time</h2>
+                <h3>{{ meetup.timeStart }} - {{ meetup.timeEnd }}</h3>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12 col-sm-8">
+              <h2 class="header">Topics</h2>
+              <h3 v-for="topic in meetup.topics"> {{ topic.description }}</h3>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <h2 class="header"> speaker </h2>
+              <h3 v-for="speaker in meetup.speakers"> {{ speaker}}</h3>
+            </div>
+          </div>
+        </div>
       </div>
 
     </template>
@@ -37,12 +72,19 @@
 
 <script>
   import StandardLayout from '../layout/Standard'
-  import boxLink from '../elements/BoxLink'
+  import BoxLink from '../elements/BoxLink'
   import {fetchUpcomingMeetup} from '../../api/api'
+  import PageHeader from '../elements/PageHeader.vue'
 
   export default {
 
-    components: { StandardLayout, boxLink },
+    components: { StandardLayout, BoxLink, PageHeader },
+
+    computed: {
+      meetup() {
+        return this.$store.getters.getUpcomingMeetup;
+      }
+    },
 
     mounted() {
       fetchUpcomingMeetup();

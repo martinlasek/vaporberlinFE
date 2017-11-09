@@ -16,18 +16,34 @@
     }
   }
 
-  .upcoming-meetup {
-    background-color: @white;
-    border-radius: 4px;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
-    padding: 15px;
+  .upcoming-meetup-wrapper {
+    color: @white;
+    padding-top: 15px;
     width: 100%;
 
-    h2 {
-      font-size: 14px;
-      font-weight: 700;
-      margin: 0;
-      text-transform: uppercase;
+    .upcoming-meetup {
+      background-color: @white;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+      color: @black;
+      padding: 15px;
+      width: 100%;
+
+      .header {
+        margin-bottom: 5px;
+      }
+
+      h2 {
+        font-size: 14px;
+        font-weight: 700;
+        margin: 0 5px 0 0;
+        text-transform: uppercase;
+      }
+
+      h3 {
+        font-size: 20px;
+        padding-top: 5px;
+      }
     }
   }
 }
