@@ -5,7 +5,8 @@ export const versions = [
   {
     number: '1.2.0',
     changes: [
-      'profile: set personal data, change your email, delete your account'
+      'profile: set personal data, change your email, delete your account',
+      'you can now see upcoming meetup information on the start page'
     ]
   },
   {

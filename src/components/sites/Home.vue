@@ -55,11 +55,19 @@
           <div class="row">
             <div class="col-xs-12 col-sm-8">
               <h2 class="header">Topics</h2>
-              <h3 v-for="topic in meetup.topics"> {{ topic.description }}</h3>
+              <ol class="topics">
+                <li v-for="topic in meetup.topics">
+                  <h3> {{ topic.description }}</h3>
+                </li>
+              </ol>
             </div>
             <div class="col-xs-12 col-sm-4">
               <h2 class="header"> speaker </h2>
-              <h3 v-for="speaker in meetup.speakers"> {{ speaker}}</h3>
+              <ol class="speakers">
+                <li v-for="speaker in meetup.speakers">
+                  <h3> {{ speaker}} </h3>
+                </li>
+              </ol>
             </div>
           </div>
         </div>
