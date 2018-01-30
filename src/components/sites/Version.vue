@@ -15,7 +15,6 @@
             </ul>
           </white-box-small>
         </div>
-
       </div>
     </template>
   </standard-layout>
